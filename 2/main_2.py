@@ -3,9 +3,6 @@
 # https://eduinf.waw.pl/inf/alg/001_search/0012.php
 # https://home.agh.edu.pl/~zobmat/2021/rzepka_radoslaw/algorytmy.html
 
-# SEGMENTED SIEVE
-
-import math
 
 t = int(input())        # no of test cases
 m = [None] * t
@@ -14,6 +11,20 @@ for i in range(t):      # inputs
     m[i], n[i] = map(int, input().split())
 
 for i in range(t):      # calculations, every test case
+
+    for number in range(m[i], n[i] + 1):
+        if number > 1:
+            for j in range(2, number):
+                if (number % j) == 0:
+                    break
+            else:
+                print(number)
+    print("")
+
+    #the above also gives time limit exceded
+
+'''
+old version 
     for j in range(m[i], n[i]+1):     # every number in range
         if j > 1:
             for k in range(2, math.ceil(math.sqrt(j))+1):  # every natural possible divider
@@ -22,9 +33,10 @@ for i in range(t):      # calculations, every test case
             else:
                     print(j)
     print("")
+'''
 
 '''
-old version
+older version 
 for i in range(t):      # calculations, every test case
     for j in range(m[i], n[i]+1):     # every number in range
         is_prime = True
